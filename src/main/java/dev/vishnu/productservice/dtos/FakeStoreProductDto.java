@@ -1,14 +1,15 @@
-package dev.vishnu.productservice.models;
+package dev.vishnu.productservice.dtos;
 
+import dev.vishnu.productservice.models.Category;
 import lombok.Getter;
 import lombok.Setter;
 
-@Getter
 @Setter
-public class Product extends BaseModel{
+@Getter
+public class FakeStoreProductDto {
     private String title;
     private String description;
     private  String image;
-    private Category category;
+    private String category;
     private double price;
 }
