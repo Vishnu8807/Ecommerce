@@ -14,9 +14,18 @@ public class FakeStoreProductService implements ProductService{
     private RestTemplateBuilder restTemplateBuilder;
 
     private String getRequestURL = "https://fakestoreapi.com/products/{id}";
+    private String postRequestURL = "https://fakestoreapi.com/products";
 
     public FakeStoreProductService(RestTemplateBuilder restTemplateBuilder){
         this.restTemplateBuilder = restTemplateBuilder;
+    }
+
+    public GenericProductDto createProduct(GenericProductDto product) {
+        RestTemplate restTemplate = restTemplateBuilder.build();
+        ResponseEntity<GenericProductDto> response = restTemplate.postForEntity(postRequestURL,
+                product, GenericProductDto.class);
+
+        return response.getBody();
     }
 
     public GenericProductDto getProductById(Long id) {
