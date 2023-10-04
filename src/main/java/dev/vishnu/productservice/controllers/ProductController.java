@@ -5,6 +5,8 @@ import dev.vishnu.productservice.services.ProductService;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/api/v1/products")
 public class ProductController {
@@ -18,8 +20,8 @@ public class ProductController {
     }
 
     @GetMapping
-    public void getALlProducts(){
-
+    public List<GenericProductDto> getALlProducts(){
+        return productService.getAllProducts();
     }
 
     @GetMapping("{id}")
@@ -29,8 +31,8 @@ public class ProductController {
     }
 
     @DeleteMapping("{id}")
-    public void deleteProductById(){
-
+    public void deleteProductById(@PathVariable Long id){
+        productService.deleteProductById(id);
     }
 
     @PostMapping
@@ -38,8 +40,8 @@ public class ProductController {
         return productService.createProduct(product);
     }
     @PutMapping("{id}")
-    public void updateProductById(){
-
+    public void updateProductById(@PathVariable Long id, GenericProductDto product){
+        productService.updateProductById(id,product);
     }
 }
 
