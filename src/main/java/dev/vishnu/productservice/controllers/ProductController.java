@@ -1,10 +1,15 @@
 package dev.vishnu.productservice.controllers;
 
+import dev.vishnu.productservice.dtos.ExceptionDto;
 import dev.vishnu.productservice.dtos.GenericProductDto;
+import dev.vishnu.productservice.exceptions.NotFoundException;
 import dev.vishnu.productservice.services.ProductService;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.io.NotActiveException;
 import java.util.List;
 
 @RestController
@@ -25,14 +30,17 @@ public class ProductController {
     }
 
     @GetMapping("{id}")
-    public GenericProductDto getProductById(@PathVariable("id") Long id){
+    public GenericProductDto getProductById(@PathVariable("id") Long id) throws NotFoundException {
 
         return productService.getProductById(id);
     }
 
     @DeleteMapping("{id}")
-    public void deleteProductById(@PathVariable Long id){
-        productService.deleteProductById(id);
+    public ResponseEntity<GenericProductDto> deleteProductById(@PathVariable Long id){
+
+        return new ResponseEntity<>(
+                productService.deleteProductById(id),
+                HttpStatus.OK);
     }
 
     @PostMapping
@@ -43,5 +51,6 @@ public class ProductController {
     public void updateProductById(@PathVariable Long id, GenericProductDto product){
         productService.updateProductById(id,product);
     }
+
 }
 

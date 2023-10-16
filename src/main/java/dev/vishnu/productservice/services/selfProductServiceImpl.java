@@ -23,7 +23,7 @@ public class selfProductServiceImpl implements ProductService{
     }
 
     @Override
-    public void deleteProductById(Long id) {
-
+    public GenericProductDto deleteProductById(Long id) {
+        return null;
     }
 }

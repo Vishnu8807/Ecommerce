@@ -1,4 +1,4 @@
-package dev.vishnu.productservice.dtos;
+package dev.vishnu.productservice.thirdPartyProductServiceClient.fakeStore;
 
 import dev.vishnu.productservice.models.Category;
 import lombok.Getter;
