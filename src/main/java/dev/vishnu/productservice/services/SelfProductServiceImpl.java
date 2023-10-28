@@ -1,13 +1,21 @@
 package dev.vishnu.productservice.services;
 
 import dev.vishnu.productservice.dtos.GenericProductDto;
-import dev.vishnu.productservice.models.Product;
+import dev.vishnu.productservice.repositories.ProductRepository;
+import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Primary
 @Service("selfProductServiceImpl")
-public class selfProductServiceImpl implements ProductService{
+public class SelfProductServiceImpl implements ProductService{
+
+    ProductRepository productRepository;
+
+    public SelfProductServiceImpl(ProductRepository productRepository) {
+        this.productRepository = productRepository;
+    }
     @Override
     public GenericProductDto getProductById(Long id) {
         return null;

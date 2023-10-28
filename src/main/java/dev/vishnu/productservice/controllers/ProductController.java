@@ -20,7 +20,7 @@ public class ProductController {
     //We will use dependency injection
     private ProductService productService;
 
-    public ProductController(@Qualifier("FakeStoreProductService") ProductService productService) {
+    public ProductController(ProductService productService) {
         this.productService = productService;
     }
 
