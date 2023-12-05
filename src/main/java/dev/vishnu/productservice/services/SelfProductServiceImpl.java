@@ -71,12 +71,32 @@ public class SelfProductServiceImpl implements ProductService{
 
     @Override
     public void updateProductById(Long id, GenericProductDto product) {
+        Optional<Product> productOptional = productRepository.findById(id);
+        if(productOptional.isEmpty()) {
+            System.out.println("not Empty");
+            return;
+        }
+        Product product2 = productOptional.get();
+        product2.setId(product.getId());
+        product2.setTitle(product.getTitle());
+        product2.setDescription(product.getDescription());
+        product2.setImage(product.getImage());
+        product2.setPrice(product.getPrice());
+        product2.setCategory(product.getCategory());
 
+        productRepository.save(product2);
     }
 
     @Override
     public GenericProductDto deleteProductById(Long id) {
-        return null;
+        Optional<Product> productOptional = productRepository.findById(id);
+        if(productOptional.isEmpty()) {
+            return null;
+        }
+        Product product1 = productOptional.get();
+        productRepository.deleteById(id);
+
+        return convertProductToGenericProduct(product1);
     }
 
     public GenericProductDto convertProductToGenericProduct(Product product) {

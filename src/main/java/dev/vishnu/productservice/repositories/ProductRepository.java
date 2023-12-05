@@ -12,5 +12,4 @@ import java.util.function.Function;
 
 @Repository
 public interface ProductRepository extends JpaRepository<Product, Long> {
-
 }
