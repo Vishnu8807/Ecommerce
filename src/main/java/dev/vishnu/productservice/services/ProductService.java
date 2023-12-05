@@ -5,6 +5,7 @@ import dev.vishnu.productservice.exceptions.NotFoundException;
 import dev.vishnu.productservice.thirdPartyProductServiceClient.fakeStore.FakeStoreProductDto;
 
 import java.util.List;
+import java.util.UUID;
 
 public interface ProductService {
 

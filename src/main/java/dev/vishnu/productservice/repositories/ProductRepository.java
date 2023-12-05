@@ -11,8 +11,6 @@ import java.util.UUID;
 import java.util.function.Function;
 
 @Repository
-public interface ProductRepository extends JpaRepository<Product, UUID> {
-    Product findByTitleEquals(String title);
-    
-    Product findByTitleEqualsAndPrice_price(String title, double price);
+public interface ProductRepository extends JpaRepository<Product, Long> {
+
 }

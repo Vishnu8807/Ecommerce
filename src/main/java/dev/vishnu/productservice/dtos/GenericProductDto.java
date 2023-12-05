@@ -1,5 +1,7 @@
 package dev.vishnu.productservice.dtos;
 
+import dev.vishnu.productservice.models.Category;
+import dev.vishnu.productservice.models.Price;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -11,7 +13,7 @@ public class GenericProductDto {
     private Long id;
     private String title;
     private String description;
-    private  String image;
-    private String category;
-    private double price;
+    private String image;
+    private Category category;
+    private Price price;
 }
